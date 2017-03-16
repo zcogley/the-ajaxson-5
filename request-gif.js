@@ -18,9 +18,10 @@ function fetchAndDisplayGif(event) {
     // Because we will be making our own AJAX request, we dont need to send a normal request and we definitely don't want the page to refresh.
     event.preventDefault();
 
+    //I think we need to use a .on event listener?
+
     // get the user's input text from the DOM
-    var searchQuery = $('#form-gif-request').text(); // TODO should be e.g. "dance"
-    console.log(searchQuery)
+    var searchQuery = $('#entry').val(); // TODO should be e.g. "dance"
 
     // configure a few parameters to attach to our request
     var params = {
