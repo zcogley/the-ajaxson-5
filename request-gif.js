@@ -20,16 +20,17 @@ function fetchAndDisplayGif(event) {
 
     // get the user's input text from the DOM
     var searchQuery = $('#form-gif-request').text(); // TODO should be e.g. "dance"
+    console.log(searchQuery)
 
     // configure a few parameters to attach to our request
     var params = {
         api_key: "dc6zaTOxFJmzC",
-        tag : "" // TODO should be e.g. "jackson 5 dance"
+        tag : "jackson 5" + searchQuery // TODO should be e.g. "jackson 5 dance"
     };
 
     // make an ajax request for a random GIF
     $.ajax({
-        url: "", // TODO where should this request be sent?
+        url: "https://api.giphy.com/v1/gifs/random", // TODO where should this request be sent?
         data: params, // attach those extra parameters onto the request
         success: function(response) {
             // if the response comes back successfully, the code in here will execute.
