@@ -26,8 +26,10 @@ function fetchAndDisplayGif(event) {
     // configure a few parameters to attach to our request
     var params = {
         api_key: "dc6zaTOxFJmzC",
-        tag : "jackson 5" + searchQuery // TODO should be e.g. "jackson 5 dance"
+        tag : "jackson 5" + " " + searchQuery // TODO should be e.g. "jackson 5 dance"
     };
+
+    console.log(params);
 
     // make an ajax request for a random GIF
     $.ajax({
@@ -39,10 +41,13 @@ function fetchAndDisplayGif(event) {
             // jQuery passes us the `response` variable, a regular javascript object created from the JSON the server gave us
             console.log("we received a response!");
             console.log(response);
+            console.log(response.data.url);
 
             // TODO
             // 1. set the source attribute of our image to the image_url of the GIF
+            $('#gif').attr('src', response.data.url);
             // 2. hide the feedback message and display the image
+            $('#gif').toggle()
         },
         error: function() {
             // if something went wrong, the code in here will execute instead of the success function
