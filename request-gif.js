@@ -2,7 +2,23 @@
 
 $(document).ready(function() {
     // register our function as the "callback" to be triggered by the form's submission event
-    $("#form-gif-request").submit(fetchAndDisplayGif); // in other words, when the form is submitted, fetchAndDisplayGif() will be executed
+    $("#form-gif-request").submit(function(event) {
+      event.preventDefault();
+
+      var riddleAnswer = $('#validate').val();
+
+      if (riddleAnswer != 5) {
+        $('#gif').hide();
+        $("#error-message").show();
+        $('#validate').addClass("invalid-field");
+      }
+      else {
+        $("#error-message").hide();
+        $('#validate').removeClass("invalid-field");
+        $(fetchAndDisplayGif);
+      }
+
+    }); // in other words, when the form is submitted, fetchAndDisplayGif() will be executed
 });
 
 
@@ -14,7 +30,7 @@ $(document).ready(function() {
  */
 
 
-function fetchAndDisplayGif(event) {
+function fetchAndDisplayGif() {
 
     // This prevents the form submission from doing what it normally does: send a request (which would cause our page to refresh).
     // Because we will be making our own AJAX request, we dont need to send a normal request and we definitely don't want the page to refresh.
@@ -41,7 +57,6 @@ function fetchAndDisplayGif(event) {
             // jQuery passes us the `response` variable, a regular javascript object created from the JSON the server gave us
             console.log("we received a response!");
             console.log(response);
-            console.log(response.data.image_url);
 
             // TODO
             // 1. set the source attribute of our image to the image_url of the GIF
