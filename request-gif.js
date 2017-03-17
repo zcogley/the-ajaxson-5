@@ -12,6 +12,8 @@ $(document).ready(function() {
  *
  * upon receiving a response from Giphy, updates the DOM to display the new GIF
  */
+
+
 function fetchAndDisplayGif(event) {
 
     // This prevents the form submission from doing what it normally does: send a request (which would cause our page to refresh).
@@ -29,8 +31,6 @@ function fetchAndDisplayGif(event) {
         tag : "jackson 5" + " " + searchQuery // TODO should be e.g. "jackson 5 dance"
     };
 
-    console.log(params);
-
     // make an ajax request for a random GIF
     $.ajax({
         url: "https://api.giphy.com/v1/gifs/random", // TODO where should this request be sent?
@@ -41,13 +41,14 @@ function fetchAndDisplayGif(event) {
             // jQuery passes us the `response` variable, a regular javascript object created from the JSON the server gave us
             console.log("we received a response!");
             console.log(response);
-            console.log(response.data.url);
+            console.log(response.data.image_url);
 
             // TODO
             // 1. set the source attribute of our image to the image_url of the GIF
             $('#gif').attr('src', response.data.image_url);
             // 2. hide the feedback message and display the image
-            $('#gif').show()
+            $('#gif').show();
+            $('#feedback').hide();
         },
         error: function() {
             // if something went wrong, the code in here will execute instead of the success function
@@ -60,6 +61,8 @@ function fetchAndDisplayGif(event) {
 
     // TODO
     // give the user a "Loading..." message while they wait
+      $('#feedback').text('Loading...');
+      $('#feedback').show();
 
 }
 
