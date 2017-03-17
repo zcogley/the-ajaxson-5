@@ -45,14 +45,14 @@ function fetchAndDisplayGif(event) {
 
             // TODO
             // 1. set the source attribute of our image to the image_url of the GIF
-            $('#gif').attr('src', response.data.url);
+            $('#gif').attr('src', response.data.image_url);
             // 2. hide the feedback message and display the image
-            $('#gif').toggle()
+            $('#gif').show()
         },
         error: function() {
             // if something went wrong, the code in here will execute instead of the success function
 
-            // give the user an error message
+            // give the an user an error message
             $("#feedback").text("Sorry, could not load GIF. Try again!");
             setGifLoadedStatus(false);
         }
