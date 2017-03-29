@@ -1,7 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html class="container-fluid">
 <head>
     <title>The AJAXson 5</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
     <script src="https://code.jquery.com/jquery-latest.min.js"></script>
     <script type="text/javascript" src="request-gif.js"></script>
 
@@ -16,27 +18,34 @@
     </style>
 
 </head>
-<body>
-    <h1>The AJAXson 5</h1>
+<body class="container-fluid">
+    <h1 class="jumbotron text-center text-primary">The AJAXson 5</h1>
 
-    <form id="form-gif-request" />
-        <label>What kind of Jackson 5 related gif do you want?</label>
-        <input id="entry" name="tag" type="text" />
+    <form id="form-gif-request"/>
+      <div class="row">
+        <div class="well text-center col-md-6">
+            <label>What kind of Jackson 5 related gif do you want?</label>
+            <br>
+            <br>
+            <input id="entry" name="tag" type="text" />
+        </div>
+
+        <div class="well text-center col-md-6">
+          <label>Prove you are not a robot by answering this riddle:</label>
         <br>
+          <input id="validate" name="robot" type="text" />
         <br>
-        <label>Prove you are not a robot by answering this riddle:</label>
+          <label><strong> Jacksons are better than 1.</strong></label>
+        </div>
+
+        <p class="text-center" id="error-message" hidden="true">No Gifs for You.</p>
         <br>
-        <br>
-        <input id="validate" name="robot" type="text" />
-        <label><strong> Jacksons are better than 1.</strong></label>
-        <br>
-        <p id="error-message" hidden="true">No Gifs for You.</p>
-        <br>
-        <input type="submit" value="Get my Gif!" />
+        <input type="submit" value="Get my Gif!" class="btn btn-block btn-primary"/>
+      </div>
     </form>
 
     <br>
-    <img id="gif" src="" hidden="true"/>
+    <img class="center-block" id="gif" src="" hidden="true">
     <p id="feedback" hidden="true"></p>
 
 </body>
